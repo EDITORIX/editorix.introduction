@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDITORIX Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior:smooth;}
+body {background:#0a0a0a; color:#fff;}
+a {text-decoration:none; color:inherit;}
+:root {--primary:#fff; --hover:#bbb; --glow:#80808033;}
+
+/* ===== Header ===== */
+header {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(135deg, #050505, #101010);
+  position:relative;
+  overflow:hidden;
+}
+header::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background:radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+  animation:moveBg 15s linear infinite;
+  pointer-events:none;
+}
+@keyframes moveBg {0% {transform:translateX(0);}50% {transform:translateX(50px);}100% {transform:translateX(0);}}
+header .logo {
+  opacity:0;
+  transform:translateY(100px);
+  animation:slideUp 1.5s forwards;
+  max-width:1000px;
+  width:100%;
+  height:auto;
+  filter: drop-shadow(0 0 25px var(--primary)) brightness(1.2);
+  transition:0.5s;
+}
+header .logo:hover {transform:scale(1.05);}
+header .cta {
+  margin-top:20px;
+  padding:12px 30px;
+  border:2px solid var(--primary);
+  color:var(--primary);
+  font-weight:600;
+  opacity:0;
+  animation:fadeIn 2s forwards 1.5s;
+  transition:0.3s;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  box-shadow:0 0 15px var(--glow);
+}
+header .cta:hover {background:var(--primary); color:#0a0a0a; box-shadow:0 0 30px var(--primary);}
+@keyframes slideUp {to {opacity:1; transform:translateY(0);}}
+@keyframes fadeIn {to {opacity:1;}}
+
+/* ===== About Section ===== */
+.about {display:flex; flex-wrap:wrap; padding:80px 5%; align-items:center; background:#0c0c0c;}
+.about-img {flex:1 1 300px; text-align:center; animation:fadeInLeft 1s forwards;}
+.about-img img {width:300px; border-radius:15px; filter:brightness(0.9); box-shadow:0 0 30px var(--primary); transition:0.5s;}
+.about-img img:hover {transform:scale(1.05);}
+.about-text {flex:2 1 400px; padding:20px; animation:fadeInRight 1s forwards 0.5s; transition:0.3s;}
+.about-text h2, .about-text p {transition:0.3s;}
+.about-text h2:hover, .about-text p:hover {text-shadow:0 0 10px #fff;}
+.about-text h2 {font-size:2.5rem; margin-bottom:20px; color:var(--primary);}
+.about-text p {line-height:1.7; font-size:1.2rem; color:#ccc;}
+
+/* ===== Packages Section ===== */
+.packages {padding:80px 5%; text-align:center; background:#0a0a0a;}
+.packages h2 {font-size:2.8rem; margin-bottom:50px; color:var(--primary); text-shadow:0 0 15px var(--primary); transition:0.3s;}
+.packages h2:hover {text-shadow:0 0 20px #fff;}
+.package-cards {display:flex; flex-wrap:wrap; justify-content:center; gap:30px;}
+.card {
+  background:#111;
+  padding:35px 25px;
+  border-radius:20px;
+  flex:1 1 250px;
+  min-width:250px;
+  transition:0.4s;
+  border:2px solid transparent;
+  box-shadow:0 0 15px #000;
+  opacity:0;
+  transform:translateY(50px);
+  animation:fadeUp 1s forwards;
+  position:relative;
+}
+.card:nth-child(1){animation-delay:0.3s;}
+.card:nth-child(2){animation-delay:0.6s;}
+.card:nth-child(3){animation-delay:0.9s;}
+.card:nth-child(4){animation-delay:1.2s;}
+@keyframes fadeUp {to {opacity:1; transform:translateY(0);}}
+.card:hover {transform:translateY(-8px); border-color:#fff; box-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #fff;}
+.card.hot-offer {border-color:#ff3333;}
+.card.hot-offer h3 span {color:#ff3333;}
+.card.hot-offer:hover {border-color:#ff3333; box-shadow:0 0 10px #ff3333,0 0 20px #ff3333,0 0 30px #ff4d4d;}
+.card h3, .card p, .card .price, .card button {transition:0.3s;}
+.card h3 {font-size:1.6rem; margin-bottom:15px;}
+.card p {font-size:1.15rem; line-height:1.6; margin-bottom:15px;}
+.card .price {font-size:1.3rem; margin-bottom:20px;}
+.card button {
+    padding:12px 30px;
+    font-size:1rem;
+    border:2px solid var(--primary);
+    background:transparent;
+    color:var(--primary);
+    cursor:pointer;
+    box-shadow:0 0 15px var(--glow);
+    transition:0.3s;
+    position:relative;
+}
+.card button:hover {
+    animation:glowPulse 1.5s infinite;
+    background:var(--primary);
+    color:#0a0a0a;
+    box-shadow:0 0 25px var(--primary), 0 0 40px var(--primary), 0 0 55px var(--primary);
+}
+.card.hot-offer button:hover {
+    animation:glowRed 1.5s infinite;
+    box-shadow:0 0 25px #ff3333, 0 0 40px #ff3333, 0 0 55px #ff4d4d;
+}
+@keyframes glowPulse {
+    0% {box-shadow:0 0 15px var(--primary),0 0 25px var(--primary),0 0 35px var(--primary);}
+    50% {box-shadow:0 0 25px var(--primary),0 0 40px var(--primary),0 0 55px var(--primary);}
+    100% {box-shadow:0 0 15px var(--primary),0 0 25px var(--primary),0 0 35px var(--primary);}
+}
+@keyframes glowRed {
+    0% {box-shadow:0 0 15px #ff3333,0 0 25px #ff3333,0 0 35px #ff4d4d;}
+    50% {box-shadow:0 0 25px #ff3333,0 0 40px #ff3333,0 0 55px #ff4d4d;}
+    100% {box-shadow:0 0 15px #ff3333,0 0 25px #ff3333,0 0 35px #ff4d4d;}
+}
+
+/* ===== Footer ===== */
+footer {background:#0c0c0c; padding:50px 5%; text-align:center;}
+footer h3 {font-size:2rem; margin-bottom:20px; color:var(--primary); text-shadow:0 0 15px var(--primary);}
+footer .icons {display:flex; justify-content:center; gap:40px; font-size:2rem; margin-bottom:25px;}
+footer .icons a {color:#fff; transition:0.3s;}
+footer .icons a:hover {color:#bbb;}
+footer p {color:#888;}
+
+/* ===== Responsive ===== */
+@media(max-width:900px){.about{flex-direction:column;}.about-img img{width:80%;}.package-cards{gap:25px;}}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <img src="Editorix logo.png.png" alt="EDITORIX Logo" class="logo">
+  <a href="#packages" class="cta">View Packages</a>
+</header>
+
+<!-- About Section -->
+<section class="about" id="about">
+  <div class="about-img">
+    <img src="Image 4.png" alt="Editor Silhouette">
+  </div>
+  <div class="about-text">
+    <h2>About Me</h2>
+    <p>Hi, I’m Ashar NATHANI, founder of EDITORIX. We help creators and brands scale their content. We are professional video editors, delivering cinematic edits that increase engagement, growth, and audience impact.</p>
+  </div>
+</section>
+
+<!-- Packages Section -->
+<section class="packages" id="packages">
+  <h2>My Packages</h2>
+  <div class="package-cards">
+
+    <!-- Basic -->
+    <div class="card">
+      <h3>Basic</h3>
+      <p>1 Reel / 2 Revisions / 20-45 sec / Delivery: 24h</p>
+      <div class="price">$39</div>
+      <a href="https://wa.me/923372342122?text=Hi%20EDITORIX,%20I’m%20interested%20in%20the%20Basic%20package.%20Looking%20forward%20to%20your%20response!" target="_blank">
+        <button>Get Started</button>
+      </a>
+    </div>
+
+    <!-- Standard (Hot Offer) -->
+    <div class="card hot-offer">
+      <h3>Standard - <span>Hot Offer</span></h3>
+      <p>3 Reels / 3 Revisions per Reel / 20-45 sec / Delivery: 72h</p>
+      <div class="price">$99</div>
+      <a href="https://wa.me/923372342122?text=Hi%20EDITORIX,%20I’m%20interested%20in%20the%20Standard%20package.%20Looking%20forward%20to%20your%20response!" target="_blank">
+        <button>Get Started</button>
+      </a>
+    </div>
+
+    <!-- Premium -->
+    <div class="card">
+      <h3>Premium</h3>
+      <p>5 Reels / 3 Revisions per Reel / 35 sec - 1 min / Delivery: 120h</p>
+      <div class="price">$159</div>
+      <a href="https://wa.me/923372342122?text=Hi%20EDITORIX,%20I’m%20interested%20in%20the%20Premium%20package.%20Looking%20forward%20to%20your%20response!" target="_blank">
+        <button>Get Started</button>
+      </a>
+    </div>
+
+    <!-- Ultimate -->
+    <div class="card">
+      <h3>Ultimate</h3>
+      <p>7 Reels / 3 Revisions per Reel / 35 sec - 1 min + 1 Video / 3 Revisions / 1.5-2.5 min / Delivery: 216h</p>
+      <div class="price">$320</div>
+      <a href="https://wa.me/923372342122?text=Hi%20EDITORIX,%20I’m%20interested%20in%20the%20Ultimate%20package.%20Looking%20forward%20to%20your%20response!" target="_blank">
+        <button>Get Started</button>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <h3>Contact Me</h3>
+  <div class="icons">
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contacteditorix@gmail.com&su=Package%20Inquiry&body=Hi%20EDITORIX,%20I’m%20interested%20in%20your%20package.%20Looking%20forward%20to%20your%20response!" target="_blank" title="Email Me"><i class="fas fa-envelope"></i></a>
+    <a href="https://instagram.com/asharnathani" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/923372342122" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p>© 2026 EDITORIX. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
